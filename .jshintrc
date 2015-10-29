@@ -1,0 +1,21 @@
+{
+  "undef": true,
+  "unused": true,
+  "indent": 2,
+  "curly": true,
+  "forin": true,
+  "newcap": true,
+  "quotmark": "single",
+  "undef": true,
+  "unused": true,
+  "trailing": true,
+  "strict": true,
+  "maxlen": 90,
+  "globals": {
+    "window": true,
+    "console": true,
+    "dsplayer": true, 
+    "define": true,
+    "require": true
+  }
+}
