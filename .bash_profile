@@ -1,6 +1,7 @@
 export EDITOR=emacs
 export VISUAL=emacs
 export TERM=xterm-256color
+export PATH="$PATH:/Users/dalkire/scripts:/Users/dalkire/pear/bin"
 
 source ~/.git-prompt.sh
 

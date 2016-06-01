@@ -1,3 +1,7 @@
+if [ -f ~/.bash_git_func ]; then
+   source ~/.bash_git_func
+fi
+
 ## ALIASES
 alias ga='git add'
 alias gp='git push'
@@ -22,6 +26,10 @@ alias gpo='git push origin'
 alias gpom='git push origin master'
 alias gpod='git push origin dev'
 alias gpoh='git push origin HEAD'
+alias gcoa='_gcoa'
+alias gcob='_gcob'
+alias gpla='_gpla'
+alias gsa='_gsa'
 
 if [ -f ~/scripts/git-completion.bash ]; then
    source ~/scripts/git-completion.bash
