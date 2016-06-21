@@ -1,6 +1,5 @@
 function _gcoa() {
-    pwd=`pwd`
-    PWD=$pwd
+    pushd `pwd`
 
     if [[ $# -eq 0 ]] ; then
         echo "Requires a branch name to checkout"
@@ -18,12 +17,11 @@ function _gcoa() {
         git checkout $1
     fi
 
-    cd $PWD
+    popd
 }
 
 function _gcob() {
-    pwd=`pwd`
-    PWD=$pwd
+    pushd `pwd`
 
     if [[ $# -eq 0 ]] ; then
         echo "Requires a branch name to checkout"
@@ -41,12 +39,11 @@ function _gcob() {
         git checkout -b $1
     fi
 
-    cd $PWD
+    popd
 }
 
 function _gpla() {
-    pwd=`pwd`
-    PWD=$pwd
+    pushd `pwd`
 
     echo -e "\n\033[32mPulling PHP\033[0m"
     cd ~/wf/php
@@ -60,12 +57,11 @@ function _gpla() {
     cd ~/wf/templates
     git pull
 
-    cd $PWD
+    popd
 }
 
 function _gsa() {
-    pwd=`pwd`
-    PWD=$pwd
+    pushd `pwd`
 
     echo -e "\n\033[32mGit Status: PHP\033[0m"
     cd ~/wf/php
@@ -79,7 +75,7 @@ function _gsa() {
     cd ~/wf/templates
     git status
 
-    cd $PWD
+    popd
 }
 
 function _gbub() {
