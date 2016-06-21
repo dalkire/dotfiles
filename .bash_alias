@@ -1,3 +1,11 @@
+function _ag() {
+    if [[ $# -eq 0 ]] ; then
+        echo "Requires a module name"
+    else
+        ag -Q "define('$1'" ~/wf/resources/st4/includes/js/amd_modules
+    fi
+}
+
 alias l='ls -ohaG'
 alias o='open'
 alias phperr='tail -n 20 /var/log/apache2/error_log | less'
@@ -8,7 +16,9 @@ alias 3.='cd ../../..'
 alias 4.='cd ../../../..'
 alias 5.='cd ../../../../..'
 alias web='cd ~/web'
+alias dev='ssh webphp537.dev.bo3.csnzoo.com'
 alias wr='wayrunner'
+alias sniff='gdp --name-only | xargs phpcs --colors --standard=CSNStores'
 alias wfp='cd ~/wf/php'
 alias wfr='cd ~/wf/resources'
 alias wft='cd ~/wf/templates'

@@ -9,6 +9,7 @@ alias gpl='git pull'
 alias gf='git fetch'
 alias gl='git log --oneline'
 alias gm='git merge --no-ff'
+alias gms='git merge --squash'
 alias gll='git log'
 alias gs='git status'
 alias gd='git diff'
@@ -30,6 +31,7 @@ alias gcoa='_gcoa'
 alias gcob='_gcob'
 alias gpla='_gpla'
 alias gsa='_gsa'
+alias gbub='_gbub'
 
 if [ -f ~/scripts/git-completion.bash ]; then
    source ~/scripts/git-completion.bash

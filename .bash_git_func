@@ -1,4 +1,7 @@
 function _gcoa() {
+    pwd=`pwd`
+    PWD=$pwd
+
     if [[ $# -eq 0 ]] ; then
         echo "Requires a branch name to checkout"
     else
@@ -14,9 +17,14 @@ function _gcoa() {
         cd ~/wf/templates
         git checkout $1
     fi
+
+    cd $PWD
 }
 
 function _gcob() {
+    pwd=`pwd`
+    PWD=$pwd
+
     if [[ $# -eq 0 ]] ; then
         echo "Requires a branch name to checkout"
     else
@@ -32,9 +40,14 @@ function _gcob() {
         cd ~/wf/templates
         git checkout -b $1
     fi
+
+    cd $PWD
 }
 
 function _gpla() {
+    pwd=`pwd`
+    PWD=$pwd
+
     echo -e "\n\033[32mPulling PHP\033[0m"
     cd ~/wf/php
     git pull
@@ -46,9 +59,14 @@ function _gpla() {
     echo -e "\n\033[32mPulling Templates\033[0m"
     cd ~/wf/templates
     git pull
+
+    cd $PWD
 }
 
 function _gsa() {
+    pwd=`pwd`
+    PWD=$pwd
+
     echo -e "\n\033[32mGit Status: PHP\033[0m"
     cd ~/wf/php
     git status
@@ -60,4 +78,16 @@ function _gsa() {
     echo -e "\n\033[32mGit Status: Templates\033[0m"
     cd ~/wf/templates
     git status
+
+    cd $PWD
 }
+
+function _gbub() {
+    if [[ $# -eq 0 ]] ; then
+        echo "Requires a branch name to set upstream"
+    else
+        echo -e "\n\033[32mSetting to track upstream branch: $1\033[0m"
+        git branch --set-upstream-to=origin/$1 $1
+    fi
+}
+
