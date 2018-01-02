@@ -19,3 +19,7 @@ fi
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
+
+if [ -f ~/scripts/wf.sh ]; then
+   source ~/scripts/wf.sh
+fi

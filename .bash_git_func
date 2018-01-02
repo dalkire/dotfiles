@@ -29,14 +29,17 @@ function _gcob() {
         echo -e "\n\033[32mCreating new branch $1 on PHP\033[0m"
         cd ~/wf/php
         git checkout -b $1
+        git branch --set-upstream-to=origin/master HEAD
 
         echo -e "\n\033[32mCreating new branch $1 on Resources\033[0m"
         cd ~/wf/resources
         git checkout -b $1
+        git branch --set-upstream-to=origin/master HEAD
 
         echo -e "\n\033[32mCreating new branch $1 on Templates\033[0m"
         cd ~/wf/templates
         git checkout -b $1
+        git branch --set-upstream-to=origin/master HEAD
     fi
 
     popd
@@ -63,17 +66,35 @@ function _gpla() {
 function _gsa() {
     pushd `pwd`
 
-    echo -e "\n\033[32mGit Status: PHP\033[0m"
+    echo -e "\n\033[32m== PHP ==\033[0m"
     cd ~/wf/php
     git status
 
-    echo -e "\n\033[32mGit Status: Resources\033[0m"
+    echo -e "\n\033[32m== Resources ==\033[0m"
     cd ~/wf/resources
     git status
 
-    echo -e "\n\033[32mGit Status: Templates\033[0m"
+    echo -e "\n\033[32m== Templates ==\033[0m"
     cd ~/wf/templates
     git status
+
+    popd
+}
+
+function _gbua() {
+    pushd `pwd`
+
+    echo -e "\n\033[32m== PHP ==\033[0m"
+    cd ~/wf/php
+    git branch --set-upstream-to=origin/master HEAD
+
+    echo -e "\n\033[32m== Resources ==\033[0m"
+    cd ~/wf/resources
+    git branch --set-upstream-to=origin/master HEAD
+
+    echo -e "\n\033[32m== Templates ==\033[0m"
+    cd ~/wf/templates
+    git branch --set-upstream-to=origin/master HEAD
 
     popd
 }
@@ -87,3 +108,14 @@ function _gbub() {
     fi
 }
 
+function _grs() {
+    if [[ $# -eq 0 ]] ; then
+        echo "Requires the number of commits to reset"
+    else
+        MESSAGE=`git log -$1 --pretty=format:%h | tail -1 | xargs git log -1 --pretty=format:%B`
+        echo -e "\033[32mSquashing the last $1 commits and committing with the following message:\033[0m"
+        echo -e "$MESSAGE"
+        git reset --soft HEAD~$1
+        git commit -m "$MESSAGE" > /dev/null
+    fi
+}

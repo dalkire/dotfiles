@@ -16,10 +16,18 @@ alias 3.='cd ../../..'
 alias 4.='cd ../../../..'
 alias 5.='cd ../../../../..'
 alias web='cd ~/web'
-alias dev='ssh webphp537.dev.bo3.csnzoo.com'
+alias dev='wf-dev'
+alias box='wf-boxnum'
 alias wr='wayrunner'
-alias sniff='gdp --name-only | xargs phpcs --colors --standard=CSNStores'
+alias sniffphp='gdp --name-only --diff-filter=ACM | xargs phpcs --colors --standard=CSNStores'
+alias sniffjs="gdp --name-only --diff-filter=ACM | xargs eslint --config ~/wf/resources/.eslintrc --ignore-path ~/wf/resources/.eslintignore --rulesdir ~/wf/resources/node_modules/@wayfair/eslint-plugin-wf-rules/rules"
 alias wfp='cd ~/wf/php'
 alias wfr='cd ~/wf/resources'
 alias wft='cd ~/wf/templates'
-alias buildtags='etags -l php $(find . -name "*.php")'
+alias buildtags='find . -name "*.php" -exec etags -a -l php -o ~/wfTAGS {} \;'
+alias pemacs='cat > /tmp/pemacs && emacs /tmp/pemacs'
+alias debug='ssh -Nv -R 9001:localhost:9001 webphp0134.dev.bo1.csnzoo.com'
+
+function testwatch() {
+ npm run test-watch -- --files=$1
+}
