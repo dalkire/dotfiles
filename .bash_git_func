@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function _gcoa() {
     pushd `pwd`
 
@@ -63,6 +65,24 @@ function _gpla() {
     popd
 }
 
+function _gploa() {
+    pushd `pwd`
+
+    echo -e "\n\033[32mPulling PHP\033[0m"
+    cd ~/wf/php
+    git pull origin HEAD
+
+    echo -e "\n\033[32mPulling Resources\033[0m"
+    cd ~/wf/resources
+    git pull origin HEAD
+
+    echo -e "\n\033[32mPulling Templates\033[0m"
+    cd ~/wf/templates
+    git pull origin HEAD
+
+    popd
+}
+
 function _gsa() {
     pushd `pwd`
 
@@ -109,13 +129,41 @@ function _gbub() {
 }
 
 function _grs() {
-    if [[ $# -eq 0 ]] ; then
-        echo "Requires the number of commits to reset"
+    AUTHOR_EMAIL=`git config --get user.email`
+    N=0
+    
+    # If no argument is provided, collapse all the latest sequential commits by the same author.
+    if [[ $# -eq 0 ]]
+    then
+        for EMAIL in `git log -20 --pretty=format:%ae`
+        do
+            if [[ $EMAIL != $AUTHOR_EMAIL ]]
+            then
+                break
+            fi
+            N=$((N+1))
+        done
+    # If an integer argument is given, use it as the number of commits to collapse.
+    elif [[ $1 =~ ^[0-9]+$ ]]
+    then
+        N=$1
     else
-        MESSAGE=`git log -$1 --pretty=format:%h | tail -1 | xargs git log -1 --pretty=format:%B`
-        echo -e "\033[32mSquashing the last $1 commits and committing with the following message:\033[0m"
+        echo -e "Argument must be an integer representing the number of commits to collapse."
+        return
+    fi
+
+    if [[ $N -eq 0 ]]
+    then
+        echo -e "Author not found: $AUTHOR_EMAIL"
+        return
+    elif [[ $N -eq 1 ]]
+    then
+        echo -e "Only one commit found; nothing to collapse."
+    else
+        MESSAGE=`git log -$N --pretty=format:%h | tail -1 | xargs git log -1 --pretty=format:%B`
+        echo -e "\033[32mCollapsing the last $N commits and committing with the following message:\033[0m"
         echo -e "$MESSAGE"
-        git reset --soft HEAD~$1
+        git reset --soft HEAD~$N
         git commit -m "$MESSAGE" > /dev/null
     fi
 }

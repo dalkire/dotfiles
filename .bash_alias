@@ -19,14 +19,17 @@ alias web='cd ~/web'
 alias dev='wf-dev'
 alias box='wf-boxnum'
 alias wr='wayrunner'
+alias xc='open -a Xcode'
 alias sniffphp='gdp --name-only --diff-filter=ACM | xargs phpcs --colors --standard=CSNStores'
-alias sniffjs="gdp --name-only --diff-filter=ACM | xargs eslint --config ~/wf/resources/.eslintrc --ignore-path ~/wf/resources/.eslintignore --rulesdir ~/wf/resources/node_modules/@wayfair/eslint-plugin-wf-rules/rules"
+alias sniffjs="gdp --name-only --diff-filter=ACM '*.js' | xargs node_modules/eslint/bin/eslint.js --config ~/wf/resources/.eslintrc --ignore-path ~/wf/resources/.eslintignore --rulesdir ~/wf/resources/node_modules/@wayfair/eslint-plugin-wf-rules/rules"
 alias wfp='cd ~/wf/php'
 alias wfr='cd ~/wf/resources'
 alias wft='cd ~/wf/templates'
+alias wfi='cd ~/wf/wayfair-ios'
 alias buildtags='find . -name "*.php" -exec etags -a -l php -o ~/wfTAGS {} \;'
 alias pemacs='cat > /tmp/pemacs && emacs /tmp/pemacs'
 alias debug='ssh -Nv -R 9001:localhost:9001 webphp0134.dev.bo1.csnzoo.com'
+alias carthage='carthage bootstrap --platform iOS --no-use-binaries'
 
 function testwatch() {
  npm run test-watch -- --files=$1
