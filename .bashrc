@@ -2,7 +2,6 @@ if [ -f ~/.bash_alias ]; then
    source ~/.bash_alias
 fi
 
-eval "$(_WAYRUNNER_COMPLETE=source wayrunner)"
 export PATH="/Users/dalkire/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -11,3 +10,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=~/.local/bin/:$PATH

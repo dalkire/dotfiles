@@ -1,8 +1,6 @@
 export EDITOR=emacs
 export VISUAL=emacs
 export TERM=xterm-256color
-export PATH="$PATH:/Users/dalkire/scripts:/Users/dalkire/pear/bin"
-export PATH="$PATH:/Applications/Racket v7.0/bin"
 
 source ~/.git-prompt.sh
 
@@ -33,5 +31,6 @@ fi
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
+export PATH="/opt/homebrew/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
