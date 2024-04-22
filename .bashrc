@@ -11,3 +11,4 @@ export NVM_DIR="$HOME/.nvm"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=~/.local/bin/:$PATH
+export NODE_OPTIONS=--max_old_space_size=12288

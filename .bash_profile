@@ -1,5 +1,5 @@
-export EDITOR=emacs
-export VISUAL=emacs
+export EDITOR="emacs -nw"
+export VISUAL="emacs -nw"
 export TERM=xterm-256color
 
 source ~/.git-prompt.sh

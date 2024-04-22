@@ -17,13 +17,12 @@ alias 4.='cd ../../../..'
 alias 5.='cd ../../../../..'
 alias web='cd ~/web'
 alias emacs='emacs -nw'
-alias sniffphp='gdp --name-only --diff-filter=ACM | xargs phpcs --colors --standard=CSNStores'
-alias sniffjs="gdp --name-only --diff-filter=ACM '*.js' | xargs node_modules/eslint/bin/eslint.js --config ~/wf/resources/.eslintrc --ignore-path ~/wf/resources/.eslintignore --rulesdir ~/wf/resources/node_modules/@wayfair/eslint-plugin-wf-rules/rules"
+alias cde='cd ~/emacs'
 alias ss='cd ~/ss'
 alias sse='cd ~/ss/ss-ecomm-frontend'
 alias sso='cd ~/ss/ss-ecomm-frontend/apps/odmon'
-alias buildtags='find . -name "*.php" -exec etags -a -l php -o ~/wfTAGS {} \;'
-alias pemacs='cat > /tmp/pemacs && emacs /tmp/pemacs'
+alias eslint-off='export DEV_DISABLE_ESLINT=true'
+alias eslint-on='export DEV_DISABLE_ESLINT=false'
 
 function testwatch() {
  npm run test-watch -- --files=$1
