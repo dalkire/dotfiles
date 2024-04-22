@@ -23,6 +23,10 @@ alias sse='cd ~/ss/ss-ecomm-frontend'
 alias sso='cd ~/ss/ss-ecomm-frontend/apps/odmon'
 alias eslint-off='export DEV_DISABLE_ESLINT=true'
 alias eslint-on='export DEV_DISABLE_ESLINT=false'
+alias sleep30='sudo shutdown -s +30'
+alias sleep60='sudo shutdown -s +60'
+alias sleep90='sudo shutdown -s +90'
+alias sleep120='sudo shutdown -s +120'
 
 function testwatch() {
  npm run test-watch -- --files=$1
